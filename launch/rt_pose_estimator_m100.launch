@@ -1,0 +1,34 @@
+<launch>
+  <node name="rt_pose_estimator_m100" pkg="ay_3dvision" type="rt_pose_estimator_node">
+    <remap from="/camera/depth/points_xyzrgb" to="/sentis_m100/depth_non_filtered" />
+    <param name="no_rgb_in_points" value="true" />
+    <param name="remove_plane_from_cloud" value="false" />
+    <param name="normal_calc_step" value="3" />
+    <param name="opt_render_dx" value="3" />
+    <param name="opt_render_dy" value="3" />
+    <param name="depth_diff_thresh" value="0.2" />
+    <param name="normal_diff_thresh" value="0.3" />
+    <param name="nodata_diff_depth" value="0.2" />
+    <param name="nodata_diff_normal" value="0.3" />
+
+    <param name="th_good_depth_ratio" value="0.3" />
+    <param name="th_bad_depth_ratio" value="0.7" />
+    <param name="th_good_normal_ratio" value="0.2" />
+    <param name="th_bad_normal_ratio" value="0.7" />
+
+    <param name="resize_ratio" value="4.0" />
+
+    <param name="cam_width" value="160" />
+    <param name="cam_height" value="120" />
+    <rosparam param="cam_proj">
+      [-98.9135, 0.0, 81.5854, 0.0,
+       0.0, -99.1001, 59.2054, 0.0,
+       0.0, 0.0, 1.0, 0.0]
+    </rosparam>
+    <!--<rosparam param="cam_proj">
+      [-96.4376, 0.0, 81.5862, 0.0,
+       0.0, -96.0888, 59.6041, 0.0,
+       0.0, 0.0, 1.0, 0.0]
+    </rosparam>-->
+  </node>
+</launch>

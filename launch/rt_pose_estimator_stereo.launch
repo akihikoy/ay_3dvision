@@ -1,0 +1,29 @@
+<launch>
+  <node name="rt_pose_estimator_stereo" pkg="ay_3dvision" type="rt_pose_estimator_node">
+    <remap from="/camera/depth/points_xyzrgb" to="/usb_stereo/point_cloud" />
+    <param name="no_rgb_in_points" value="false" />
+    <param name="remove_plane_from_cloud" value="false" />
+    <param name="normal_calc_step" value="7" />
+    <param name="opt_render_dx" value="15" />
+    <param name="opt_render_dy" value="15" />
+    <param name="depth_diff_thresh" value="0.2" />
+    <param name="normal_diff_thresh" value="0.4" />
+    <param name="nodata_diff_depth" value="0.2" />
+    <param name="nodata_diff_normal" value="0.4" />
+
+    <param name="th_good_depth_ratio" value="0.3" />
+    <param name="th_bad_depth_ratio" value="0.7" />
+    <param name="th_good_normal_ratio" value="0.3" />
+    <param name="th_bad_normal_ratio" value="0.7" />
+
+    <param name="resize_ratio" value="1.0" />
+
+    <param name="cam_width" value="352" />
+    <param name="cam_height" value="288" />
+    <rosparam param="cam_proj">
+      [414.1995438723134, 0.0, 156.2075252532959, 0.0,
+       0.0, 414.1995438723134, 139.435284614563, 0.0,
+       0.0, 0.0, 1.0, 0.0]
+    </rosparam>
+  </node>
+</launch>

@@ -1,0 +1,27 @@
+<package>
+  <description brief="ay_3dvision">
+
+     ay_3dvision
+
+  </description>
+  <author>Akihiko Yamaguchi</author>
+  <license>Not decided</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://akihikoy.net</url>
+  <depend package="ay_3dvision_msgs"/>
+  <depend package="ay_cpp"/>
+  <depend package="ay_vision"/>
+  <depend package="roscpp"/>
+  <depend package="std_msgs"/>
+  <depend package="std_srvs"/>
+  <!--<depend package="image_transport"/>-->
+  <!--<depend package="camera_info_manager"/>-->
+  <depend package="pcl_ros"/>
+
+  <export>
+    <cpp cflags="-I${prefix}/include" lflags="-L${prefix}/lib"/>
+  </export>
+
+</package>
+
+

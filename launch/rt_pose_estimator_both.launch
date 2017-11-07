@@ -1,0 +1,4 @@
+<launch>
+  <include file="$(find ay_3dvision)/launch/rt_pose_estimator_m100.launch" />
+  <include file="$(find ay_3dvision)/launch/rt_pose_estimator_xtion.launch" />
+</launch>

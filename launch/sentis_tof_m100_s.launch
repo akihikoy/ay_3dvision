@@ -1,0 +1,18 @@
+<!--Launch sentis_m100_node to get data from Sentis ToF m100
+    and send it as a point cloud topic.
+    We do NOT use the sentis_tof_m100 package.
+    To check IP, go http://192.168.1.1/ then find a MAC addr 00:26:35:00:00:4C-->
+<launch>
+  <node name="sentis_m100" pkg="ay_3dvision" type="sentis_m100_node">
+    <param name="init_fps" value="2" />
+    <param name="integ_time" value="573" />
+    <!--<param name="integ_time" value="5000" />-->
+<!--     <param name="tcp_ip" value="192.168.111.21" /> -->
+<!--     <param name="tcp_ip" value="192.168.1.100" /> -->
+<!--     <param name="tcp_ip" value="192.168.1.129" /> -->
+    <param name="tcp_ip" value="192.168.0.14" />  <!--With Baxter Setup-->
+    <param name="udp_ip" value="224.0.0.1" />
+    <param name="tcp_port" value="10001" />
+    <param name="udp_port" value="10002" />
+  </node>
+</launch>
