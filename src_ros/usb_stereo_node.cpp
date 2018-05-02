@@ -15,6 +15,7 @@
 #include "ay_vision/edge_fit.h"
 #include "ay_vision/vision_util.h"
 #include "ay_cpp/geom_util.h"
+#include "ay_cpp/sys_util.h"
 //-------------------------------------------------------------------------------------------
 #include "ay_3dvision_msgs/ROI_3DProj.h"
 #include "ay_3dvision_msgs/FitEdge.h"

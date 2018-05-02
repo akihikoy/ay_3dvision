@@ -9,6 +9,8 @@
 #include "ay_3dvision/pcl_util.h"
 #include "ay_vision/rt_pose_estimator.h"
 #include "ay_vision/vision_util.h"
+#include "ay_cpp/cpp_util.h"
+#include "ay_cpp/sys_util.h"
 //-------------------------------------------------------------------------------------------
 #include "ay_3dvision_msgs/CreateScene.h"
 #include "ay_3dvision_msgs/RemoveScene.h"
