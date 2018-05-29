@@ -21,21 +21,25 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #uncomment if you have defined services
 #rosbuild_gensrv()
 
-# ++++OPENCV++++
-# NOTE: Install OpenCV 2.4.13 on ~/.local from source which includes cv::fisheye
-# Don't use opencv as found by any prior running of find_package
-unset(OpenCV_CONFIG_PATH CACHE)
-unset(OpenCV_DIR CACHE)
-set(TMP_PREFIX_PATH ${CMAKE_PREFIX_PATH})
-set(CMAKE_PREFIX_PATH "$ENV{HOME}/.local")
-find_package(OpenCV 2.4.13 REQUIRED)
-# restore CMAKE_PREFIX_PATH and other cached variables
-# in order to avoid other packages find this opencv.
-set(CMAKE_PREFIX_PATH ${TMP_PREFIX_PATH})
-unset(OpenCV_CONFIG_PATH CACHE)
-unset(OpenCV_DIR CACHE)
+# ++++OPENCV-2.x++++
+find_package(OpenCV 2 REQUIRED)
 message("OpenCV_INCLUDE_DIRS: ${OpenCV_INCLUDE_DIRS}")
 message("OpenCV_LIBRARIES: ${OpenCV_LIBRARIES}")
+# ++++OPENCV-2.4.13++++
+# # NOTE: Install OpenCV 2.4.13 on ~/.local from source which includes cv::fisheye
+# # We don't use opencv found by any prior running of find_package
+# unset(OpenCV_CONFIG_PATH CACHE)
+# unset(OpenCV_DIR CACHE)
+# set(TMP_PREFIX_PATH ${CMAKE_PREFIX_PATH})
+# set(CMAKE_PREFIX_PATH "$ENV{HOME}/.local")
+# find_package(OpenCV 2.4.13 REQUIRED)
+# # restore CMAKE_PREFIX_PATH and other cached variables
+# # in order to avoid other packages find this opencv.
+# set(CMAKE_PREFIX_PATH ${TMP_PREFIX_PATH})
+# unset(OpenCV_CONFIG_PATH CACHE)
+# unset(OpenCV_DIR CACHE)
+# message("OpenCV_INCLUDE_DIRS: ${OpenCV_INCLUDE_DIRS}")
+# message("OpenCV_LIBRARIES: ${OpenCV_LIBRARIES}")
 # ----OPENCV----
 
 find_package(Eigen3 REQUIRED)
@@ -51,16 +55,16 @@ include_directories(${EIGEN3_INCLUDE_DIR})
 
 #Building libraries:
 
-rosbuild_add_library(ay3v_pcl_util
+rosbuild_add_library(ay3dv_pcl_util
       src/pcl_util.cpp
       )
 
 if(EXISTS /usr/include/libm100)
-  rosbuild_add_library(ay3v_sentis_m100
+  rosbuild_add_library(ay3dv_sentis_m100
         src/sentis_m100.cpp
         )
   include_directories(/usr/include/libm100)
-  target_link_libraries(ay3v_sentis_m100
+  target_link_libraries(ay3dv_sentis_m100
         ${OpenCV_LIBRARIES}
         m100
         )
@@ -74,9 +78,10 @@ rosbuild_add_executable(rt_pose_estimator_node
       )
 target_link_libraries(rt_pose_estimator_node
       ayv_rt_pose_estimator
-      ay3v_pcl_util
+      ay3dv_pcl_util
       ay_vision
       ${OpenCV_LIBRARIES}
+      pcl_segmentation
       )
 
 if(EXISTS /usr/include/libm100)
@@ -85,7 +90,7 @@ if(EXISTS /usr/include/libm100)
         )
   include_directories(/usr/include/libm100)
   target_link_libraries(sentis_m100_node
-        ay3v_sentis_m100
+        ay3dv_sentis_m100
         ${OpenCV_LIBRARIES}
         m100
         )
@@ -95,7 +100,7 @@ rosbuild_add_executable(usb_stereo_node
       src_ros/usb_stereo_node.cpp
       )
 target_link_libraries(usb_stereo_node
-      ay3v_pcl_util
+      ay3dv_pcl_util
       ayv_color_detector
       ayv_flow_finder
       ayv_usb_stereo
@@ -103,4 +108,7 @@ target_link_libraries(usb_stereo_node
       ay_vision
       ay_cpp
       ${OpenCV_LIBRARIES}
+      pcl_segmentation
+      boost_thread
+      boost_system
       )

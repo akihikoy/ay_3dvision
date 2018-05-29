@@ -1,0 +1,5 @@
+# Name of the scene:
+string name
+# Ray tracing models:
+RayTraceModel[] models
+---

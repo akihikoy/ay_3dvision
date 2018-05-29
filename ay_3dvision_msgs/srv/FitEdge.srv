@@ -1,0 +1,34 @@
+# TEdgeDetectParams EdgeDetect
+float64 ED_PreBlurSize  #default: 3
+float64 ED_PostBlurSize  #default: 21
+
+# TEdgeEvalParams EdgeEval
+float64 EE_MinEdgeBrightness  #default: 50.0
+float64 EE_MinMatchingRatio  #default: 0.4
+
+# TCMAESParams CMAES
+
+# Lower bound of optimized parameters [6]
+float64[] XMin
+# Upper bound of optimized parameters [6]
+float64[] XMax
+# Initial standard deviation [6]
+float64[] Sig0
+
+# Parameterization of pose:
+#   X: Displacement from a reference pose pref.
+#   X[0:3]: Displacement of x,y,z position.
+#   X[3:6]: Rotation vector = angle*axis(x,y,z).
+
+# Nx3 (serialized) matrix storing local edge points of a model
+float32[] LPoints3d
+
+# Reference (initial) pose around which a pose is searched [7]
+float64[] pose0
+---
+
+# Optimized pose [7]
+float64[] pose
+
+# Quality of fitting
+float64 quality

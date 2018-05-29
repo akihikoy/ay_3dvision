@@ -1,0 +1,16 @@
+<package>
+  <description brief="ay_3dvision_msgs">
+
+     ay_3dvision_msgs
+
+  </description>
+  <author>Akihiko Yamaguchi</author>
+  <license>Not decided</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://akihikoy.net</url>
+  <depend package="std_msgs"/>
+  <depend package="geometry_msgs"/>
+
+</package>
+
+

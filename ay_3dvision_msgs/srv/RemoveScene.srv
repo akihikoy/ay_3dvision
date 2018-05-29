@@ -1,0 +1,3 @@
+# Name of the scene to be deleted (if "", all scenes are deleted):
+string name
+---
