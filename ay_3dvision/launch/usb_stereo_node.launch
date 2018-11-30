@@ -1,0 +1,26 @@
+<launch>
+  <node type="usb_stereo_node" pkg="ay_3dvision" name="usb_stereo" output="screen">
+    <param name="pkg_dir" value="$(find ay_3dvision)/" />
+    <param name="cam_config" value="config/stereo1_info.yaml" />
+    <param name="stereo_config" value="config/stereo1_info.yaml" />
+    <param name="stereof_config" value="config/stereo1_info.yaml" />
+
+    <param name="num_detectors" value="2" />
+    <param name="block_area_min" value="1.0" />
+    <param name="color_files_base1" value="$(find ay_3dvision)/x" />
+    <param name="color_files_base2" value="$(find ay_3dvision)/x2" />
+    <param name="img_win" value="1100011" type="str" />
+    <param name="disp_fps" value="30.0" />
+    <param name="disp_scale" value="0.6" />
+
+    <param name="ff_ofl_win" value="3" />
+    <param name="ff_ofl_spd_min" value="2.0" />
+    <param name="ff_er_dl" value="1" />
+    <param name="ff_amt_min" value="1.0" />
+    <param name="ff_amt_max" value="3000.0" />
+    <param name="ff_spd_min" value="1.0" />
+    <param name="ff_spd_max" value="-1.0" />
+    <param name="ff_mask_flen" value="0" />
+    <param name="send_raw_flow" value="0" />
+  </node>
+</launch>

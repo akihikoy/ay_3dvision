@@ -1,0 +1,40 @@
+%YAML:1.0
+CameraInfo:
+  -
+    Name: usbcam1_l
+    DevID: "1"
+    Width: 352
+    Height: 288
+    PixelFormat: ""
+    NRotate90: 0
+  -
+    Name: usbcam1_r
+    DevID: "2"
+    Width: 352
+    Height: 288
+    PixelFormat: ""
+    NRotate90: 0
+
+StereoInfo:
+  -
+    Name: usb_stereo
+    CamL: 0
+    CamR: 1
+    Width: 352
+    Height: 288
+    StereoParam: config/stereo1_param.yaml
+    StereoConfig: config/stereo1_info.yaml
+
+StereoConfig:
+  LensType: basic
+
+FlowStereoInfo:
+  -
+    We: 2
+    Wd: 3
+    XFilter: 1
+    YFilter: 32
+    XStep: 1
+    YStep: 16
+    ThMatch: 16
+    TFilter: 5
